@@ -23,8 +23,6 @@ fn part2() {
 }
 
 fn get_tail_movements(lines : Vec<String>, knot_length: usize) -> usize {
-    let mut answer : u32 = 0;
-
     let mut knots = vec![(0 as i32, 0 as i32); knot_length];
     let mut tail_positions = HashMap::<(i32, i32), usize>::new();
 

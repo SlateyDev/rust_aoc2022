@@ -9,19 +9,19 @@ pub fn run() {
 fn part1() {
     if let Ok(lines) = read_lines(format!("input-{}.txt", file!().replace("src\\", "").replace(".rs", ""))) {
         let mut answer : u32 = 0;
-        let mut totalCalories : u32 = 0;
+        let mut total_calories: u32 = 0;
         for line in lines {
             if let Ok(line_data) = line {
                 if line_data.len() == 0 {
-                    if totalCalories > answer {
-                        answer = totalCalories;
+                    if total_calories > answer {
+                        answer = total_calories;
                     }
-                    totalCalories = 0;
+                    total_calories = 0;
                     continue;
                 }
 
                 let calories = line_data.parse::<u32>().unwrap();
-                totalCalories += calories;
+                total_calories += calories;
             }
         }
         println!("Day {} part 1: {}", file!().replace("src\\day", "").replace(".rs", ""), answer);
@@ -31,22 +31,22 @@ fn part1() {
 fn part2() {
     if let Ok(lines) = read_lines(format!("input-{}.txt", file!().replace("src\\", "").replace(".rs", ""))) {
         let mut answer : u32 = 0;
-        let mut totalCalories : u32 = 0;
-        let mut elvesCalories : Vec<u32> = vec![];
+        let mut total_calories: u32 = 0;
+        let mut elves_calories: Vec<u32> = vec![];
         for line in lines {
             if let Ok(line_data) = line {
                 if line_data.len() == 0 {
-                    elvesCalories.push(totalCalories);
-                    totalCalories = 0;
+                    elves_calories.push(total_calories);
+                    total_calories = 0;
                     continue;
                 }
 
                 let calories = line_data.parse::<u32>().unwrap();
-                totalCalories += calories;
+                total_calories += calories;
             }
         }
-        elvesCalories.sort_by(|a, b| b.partial_cmp(a).unwrap());
-        answer = elvesCalories[..3].iter().sum();
+        elves_calories.sort_by(|a, b| b.partial_cmp(a).unwrap());
+        answer = elves_calories[..3].iter().sum();
         println!("Day {} part 2: {}", file!().replace("src\\day", "").replace(".rs", ""), answer);
     }
 }
